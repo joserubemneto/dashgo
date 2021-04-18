@@ -28,7 +28,7 @@ export function makeServer() {
     },
 
     seeds(server) {
-      server.createList('user', 10)
+      server.createList('user', 200)
     },
 
     routes() {
@@ -50,6 +50,9 @@ export function makeServer() {
 
         return new Response(200, { 'x-total-count': String(total) }, { users })
       })
+
+      this.get('users/:id')
+
       this.get('/posts')
 
       // after define miraje routes, set namespace state to "" because next/api
